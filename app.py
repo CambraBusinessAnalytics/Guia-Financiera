@@ -203,7 +203,7 @@ tabla_df2 = dash_table.DataTable(
 # =====================
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-
+server = app.server
 app.layout = html.Div([
     # Encabezado
     html.Header(
@@ -373,4 +373,4 @@ def calcular_rendimiento(monto, tasa, inflacion, plazo, tasa_alt):
 
     return resultado
 if __name__ == "__main__":
-    app.run_server(debug=False, host="0.0.0.0", port=8080)
+    app.run_server(debug=True)
