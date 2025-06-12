@@ -10,8 +10,7 @@ from dash import dash_table
 # =====================
 
 # Ruta del archivo
-file_path = "C:\\Users\\Ruth Rolón Aranda\\Documents\\Cambra\\Analisis para la consultoria\\ejemplo dash\\finanzas\\guaranies.xlsx"
-df = pd.read_excel(file_path)
+df = pd.read_excel('guaranies.xlsx')
 df['Riesgo'] = df['Riesgo'].fillna('Sin datos')
 
  # Reemplazar NaN con 'Sin Datos'
