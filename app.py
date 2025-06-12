@@ -249,15 +249,15 @@ html.Hr(),
         ]),
         dbc.Col([
             html.Label("Tasa de interés anual (%):"),
-            dcc.Input(id='input-tasa', type='number', value=8, step=0.1)
+            dcc.Input(id='input-tasa', type='number', value=8, step=0.01)
         ]),
         dbc.Col([
             html.Label("Inflación anual esperada (%):"),
-            dcc.Input(id='input-inflacion', type='number', value=4, step=0.1)
+            dcc.Input(id='input-inflacion', type='number', value=4, step=0.01)
         ]),
         dbc.Col([
             html.Label("Tasa de proyecto alternativo (%):"),
-            dcc.Input(id='input-alternativa', type='number', step=0.1)
+            dcc.Input(id='input-alternativa', type='number', step=0.01)
         ])
     ]),
     html.Br(),
