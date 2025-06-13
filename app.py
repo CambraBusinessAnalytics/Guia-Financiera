@@ -100,13 +100,14 @@ fig = px.scatter(
 )
 
 fig.update_layout(
-    margin=dict(t=80, b=150, l=40, r=40),  # Ajusta el margen inferior para dejar espacio
+    margin=dict(t=80, b=200, l=40, r=40),  # Ajusta el margen inferior para dejar espacio
     legend=dict(
         orientation="h",
         yanchor="top",
-        y=-0.2,        # Posición la leyenda justo debajo del gráfico (en coordenadas relativas)
+        y=-0.4,        # Posición la leyenda justo debajo del gráfico (en coordenadas relativas)
         xanchor="center",
         x=0.5,
+        tracegroupgap=10,
         font=dict(size=10),
         bgcolor="rgba(0,0,0,0)",
         borderwidth=0,
