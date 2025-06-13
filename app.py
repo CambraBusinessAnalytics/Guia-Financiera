@@ -100,18 +100,20 @@ fig = px.scatter(
 )
 
 fig.update_layout(
-    margin=dict(t=80, b=300, l=40, r=40),  # Aumenta margen superior e inferior
+    margin=dict(t=80, b=150, l=40, r=40),  # Ajusta el margen inferior para dejar espacio
     legend=dict(
         orientation="h",
-        yanchor="bottom",
-        y=-0.6,  # Baja la leyenda más
+        yanchor="top",
+        y=-0.2,        # Posición la leyenda justo debajo del gráfico (en coordenadas relativas)
         xanchor="center",
-        x=0.6,
+        x=0.5,
         font=dict(size=10),
         bgcolor="rgba(0,0,0,0)",
-        borderwidth=0
+        borderwidth=0,
+        yref='paper'   # Que la posición vertical sea relativa a toda la figura
     )
 )
+
 #---------------------------------------------------------------
 
 fig_categoria = px.box(
@@ -137,7 +139,7 @@ fig_categoria.update_layout(
     legend=dict(
         orientation="h",
         yanchor="bottom",
-        y=-0.4,  # Baja la leyenda más
+        y=-0.3,  # Baja la leyenda más
         xanchor="center",
         x=0.5,
         font=dict(size=10),
@@ -173,7 +175,7 @@ fig_plazo.update_layout(
     legend=dict(
         orientation="h",
         yanchor="bottom",
-        y=-0.4,  # Baja la leyenda más
+        y=-0.3,  # Baja la leyenda más
         xanchor="center",
         x=0.5,
         font=dict(size=10),
@@ -206,7 +208,7 @@ fig_riesgo.update_layout(
     legend=dict(
         orientation="h",
         yanchor="bottom",
-        y=-0.4,  # Baja la leyenda más
+        y=-0.3,  # Baja la leyenda más
         xanchor="center",
         x=0.5,
         font=dict(size=10),
