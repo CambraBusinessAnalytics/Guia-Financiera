@@ -150,6 +150,8 @@ fig_categoria.update_layout(
     )
 )
 #--------------------------------------------------------------------------------------------------------------
+orden_plazos = ['Vista', 'Muy corto plazo', 'Corto plazo', 'Mediano plazo', 'Largo plazo']
+df['Plazo_Tipo'] = pd.Categorical(df['Plazo_Tipo'], categories=orden_plazos, ordered=True)
 
 fig_plazo = px.box(
     df,
