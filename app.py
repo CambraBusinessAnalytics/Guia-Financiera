@@ -95,33 +95,32 @@ fig = px.scatter(
         "Riesgo": "Riesgo",
         "Tasa MAX": "Tasa de interés máxima (%)"
     },
-    #size="Capital Minimo",
     size_max=60,
     template="plotly_white"
 )
 
 fig.update_layout(
+    autosize=True,
+    height=500,
     legend=dict(
-        orientation="h",       # Leyenda horizontal
-        yanchor="top",         # Ancla la leyenda en la parte superior (para que quede justo debajo del gráfico)
-        y=-0.2,                # La bajamos un poco para que quede debajo
-        xanchor="center",      # Centrar horizontalmente
+        orientation="h",
+        yanchor="top",
+        y=-0.2,
+        xanchor="center",
         x=0.3,
         font=dict(size=11),
-        bgcolor="rgba(0,0,0,0)",  # Fondo transparente
+        bgcolor="rgba(0,0,0,0)",
         borderwidth=0
     ),
-    margin=dict(t=40, b=80, l=40, r=40)  # Espacio extra abajo para que no quede cortada la leyenda
+    margin=dict(t=40, b=80, l=40, r=40)
 )
-
 #---------------------------------------------------------------
 
-# Boxplot por categoría
 fig_categoria = px.box(
     df,
     x="Categoria",
     y="Tasa MAX",
-    points="all",  # Mostrar puntos individuales
+    points="all",
     hover_name="Entidad+Producto",
     hover_data={
         "Riesgo_Num": False,
@@ -134,19 +133,31 @@ fig_categoria = px.box(
     title="Distribución de tasas por categoría de producto",
     template="plotly_white"
 )
-orden_plazos = ['Vista', 'Muy corto plazo', 'Corto plazo', 'Mediano plazo', 'Largo plazo']
-df['Plazo_Tipo'] = pd.Categorical(df['Plazo_Tipo'], categories=orden_plazos, ordered=True)
 
+fig_categoria.update_layout(
+    margin=dict(t=40, b=60, l=40, r=40),
+    font=dict(size=12),
+    xaxis_title=None,
+    yaxis_title="Tasa de interés máxima (%)",
+    legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=-0.3,
+        xanchor="center",
+        x=0.5,
+        font=dict(size=11),
+        bgcolor="rgba(0,0,0,0)"
+    )
+)
+#--------------------------------------------------------------------------------------------------------------
 
-
-# Boxplot por plazo
 fig_plazo = px.box(
     df,
     x="Plazo_Tipo",
     y="Tasa MAX",
     points="all",
-    title="Distribución de tasas por tipo de plazo",
     category_orders={"Plazo_Tipo": orden_plazos},
+    title="Distribución de tasas por tipo de plazo",
     template="plotly_white",
     hover_name="Entidad+Producto",
     hover_data={
@@ -159,7 +170,22 @@ fig_plazo = px.box(
     },
 )
 
-# Boxplot por riesgo original
+fig_plazo.update_layout(
+    margin=dict(t=40, b=60, l=40, r=40),
+    font=dict(size=12),
+    xaxis_title=None,
+    yaxis_title="Tasa de interés máxima (%)",
+    legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=-0.3,
+        xanchor="center",
+        x=0.5,
+        font=dict(size=11),
+        bgcolor="rgba(0,0,0,0)"
+    )
+)
+#--------------------------------------------------------------------------------------------------
 fig_riesgo = px.box(
     df,
     x="Riesgo",
@@ -178,6 +204,24 @@ fig_riesgo = px.box(
         "Capital Minimo": True
     },
 )
+
+fig_riesgo.update_layout(
+    margin=dict(t=40, b=60, l=40, r=40),
+    font=dict(size=12),
+    xaxis_title=None,
+    yaxis_title="Tasa de interés máxima (%)",
+    legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=-0.3,
+        xanchor="center",
+        x=0.5,
+        font=dict(size=11),
+        bgcolor="rgba(0,0,0,0)"
+    )
+)
+#----------------------------------------------------------------------------
+
 df2 = df[['Categoria', 'Entidad', 'Producto', 'Tasa MIN', 'Tasa MAX', 'Capital Minimo', 'Riesgo', 'Plazo_Tipo']]
 tabla_df2 = dash_table.DataTable(
     columns=[{"name": col, "id": col} for col in df2.columns],
@@ -231,15 +275,54 @@ app.layout = html.Div([
         style={'backgroundColor': 'white'},
     ),
 html.Hr(),
-    # Gráfico
-    dbc.Container([
-    dcc.Graph(figure=fig),  # tu gráfico principal de burbujas
+
+dbc.Container([
+    dbc.Row([
+        dbc.Col(
+            dcc.Graph(
+                figure=fig,
+                config={"responsive": True},
+                style={"width": "100%", "height": "100%"}
+            ),
+            width=12
+        )
+    ]),
     html.Hr(),
-    dcc.Graph(figure=fig_categoria),
+
+    dbc.Row([
+        dbc.Col(
+            dcc.Graph(
+                figure=fig_categoria,
+                config={"responsive": True},
+                style={"width": "100%", "height": "100%"}
+            ),
+            width=12
+        )
+    ]),
     html.Hr(),
-    dcc.Graph(figure=fig_plazo),
+
+    dbc.Row([
+        dbc.Col(
+            dcc.Graph(
+                figure=fig_plazo,
+                config={"responsive": True},
+                style={"width": "100%", "height": "100%"}
+            ),
+            width=12
+        )
+    ]),
     html.Hr(),
-    dcc.Graph(figure=fig_riesgo),
+
+    dbc.Row([
+        dbc.Col(
+            dcc.Graph(
+                figure=fig_riesgo,
+                config={"responsive": True},
+                style={"width": "100%", "height": "100%"}
+            ),
+            width=12
+        )
+    ]),
     html.Hr(),
     html.H4("Calculadora de rendimiento vs inflación y alternativas"),
     dbc.Row([
