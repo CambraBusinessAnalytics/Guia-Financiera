@@ -100,19 +100,17 @@ fig = px.scatter(
 )
 
 fig.update_layout(
-    autosize=True,
-    height=500,
+    margin=dict(t=80, b=120, l=40, r=40),  # Aumenta margen superior e inferior
     legend=dict(
         orientation="h",
-        yanchor="top",
-        y=-0.2,
+        yanchor="bottom",
+        y=-0.4,  # Baja la leyenda más
         xanchor="center",
-        x=0.3,
-        font=dict(size=11),
+        x=0.5,
+        font=dict(size=10),
         bgcolor="rgba(0,0,0,0)",
         borderwidth=0
-    ),
-    margin=dict(t=40, b=80, l=40, r=40)
+    )
 )
 #---------------------------------------------------------------
 
@@ -135,18 +133,16 @@ fig_categoria = px.box(
 )
 
 fig_categoria.update_layout(
-    margin=dict(t=40, b=60, l=40, r=40),
-    font=dict(size=12),
-    xaxis_title=None,
-    yaxis_title="Tasa de interés máxima (%)",
+    margin=dict(t=80, b=120, l=40, r=40),  # Aumenta margen superior e inferior
     legend=dict(
         orientation="h",
         yanchor="bottom",
-        y=-0.3,
+        y=-0.4,  # Baja la leyenda más
         xanchor="center",
         x=0.5,
-        font=dict(size=11),
-        bgcolor="rgba(0,0,0,0)"
+        font=dict(size=10),
+        bgcolor="rgba(0,0,0,0)",
+        borderwidth=0
     )
 )
 #--------------------------------------------------------------------------------------------------------------
@@ -173,18 +169,16 @@ fig_plazo = px.box(
 )
 
 fig_plazo.update_layout(
-    margin=dict(t=40, b=60, l=40, r=40),
-    font=dict(size=12),
-    xaxis_title=None,
-    yaxis_title="Tasa de interés máxima (%)",
+    margin=dict(t=80, b=120, l=40, r=40),  # Aumenta margen superior e inferior
     legend=dict(
         orientation="h",
         yanchor="bottom",
-        y=-0.3,
+        y=-0.4,  # Baja la leyenda más
         xanchor="center",
         x=0.5,
-        font=dict(size=11),
-        bgcolor="rgba(0,0,0,0)"
+        font=dict(size=10),
+        bgcolor="rgba(0,0,0,0)",
+        borderwidth=0
     )
 )
 #--------------------------------------------------------------------------------------------------
@@ -208,18 +202,16 @@ fig_riesgo = px.box(
 )
 
 fig_riesgo.update_layout(
-    margin=dict(t=40, b=60, l=40, r=40),
-    font=dict(size=12),
-    xaxis_title=None,
-    yaxis_title="Tasa de interés máxima (%)",
+    margin=dict(t=80, b=120, l=40, r=40),  # Aumenta margen superior e inferior
     legend=dict(
         orientation="h",
         yanchor="bottom",
-        y=-0.3,
+        y=-0.4,  # Baja la leyenda más
         xanchor="center",
         x=0.5,
-        font=dict(size=11),
-        bgcolor="rgba(0,0,0,0)"
+        font=dict(size=10),
+        bgcolor="rgba(0,0,0,0)",
+        borderwidth=0
     )
 )
 #----------------------------------------------------------------------------
