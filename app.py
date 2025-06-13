@@ -100,13 +100,13 @@ fig = px.scatter(
 )
 
 fig.update_layout(
-    margin=dict(t=80, b=120, l=40, r=40),  # Aumenta margen superior e inferior
+    margin=dict(t=80, b=300, l=40, r=40),  # Aumenta margen superior e inferior
     legend=dict(
         orientation="h",
         yanchor="bottom",
-        y=-0.4,  # Baja la leyenda más
+        y=-0.6,  # Baja la leyenda más
         xanchor="center",
-        x=0.5,
+        x=0.6,
         font=dict(size=10),
         bgcolor="rgba(0,0,0,0)",
         borderwidth=0
@@ -133,13 +133,13 @@ fig_categoria = px.box(
 )
 
 fig_categoria.update_layout(
-    margin=dict(t=80, b=300, l=40, r=40),  # Aumenta margen superior e inferior
+    margin=dict(t=80, b=120, l=40, r=40),  # Aumenta margen superior e inferior
     legend=dict(
         orientation="h",
         yanchor="bottom",
-        y=-0.6,  # Baja la leyenda más
+        y=-0.4,  # Baja la leyenda más
         xanchor="center",
-        x=0.6,
+        x=0.5,
         font=dict(size=10),
         bgcolor="rgba(0,0,0,0)",
         borderwidth=0
